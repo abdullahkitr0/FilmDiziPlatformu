@@ -14,6 +14,7 @@ Bu proje, kullanıcıların film ve dizi önerileri alabileceği, içeriklere pu
 - [Kullanıcı Tarafı Özellikleri](#kullanıcı-tarafı-özellikleri)
 - [Yönetici Paneli](#yönetici-paneli)
 - [Katkıda Bulunma](#katkıda-bulunma)
+- [İletişim Bilgileri](#iletişim-bilgileri)
 - [Lisans](#lisans)
 
 ## Proje Hakkında
@@ -54,7 +55,7 @@ Film ve Dizi Öneri Sistemi, kullanıcıların film ve dizi önerileri alabilece
 
 1. **Depoyu Klonlayın:**
    ```bash
-   git clone https://github.com/kullaniciadi/proje-adi.git
+   git clone https://github.com/abdullahkitr0/FilmDiziPlatformu.git
    cd proje-adi
    ```
 
@@ -92,11 +93,11 @@ Film ve Dizi Öneri Sistemi, kullanıcıların film ve dizi önerileri alabilece
 
 ## Veritabanı 
 
-Veritabanı dosyasını indirmek için [buraya](https://github.com/kullaniciadi/proje-adi/blob/main/no/film_dizi_db(1).sql) tıklayın.
+Veritabanı dosyasını indirmek için [buraya](https://github.com/abdullahkitr0/FilmDiziPlatformu/blob/main/no/film_dizi_db(1).sql) tıklayın.
 
 ## Kullanım
 
-- Uygulamayı başlatın ve tarayıcınızda `http://localhost/proje-adi` adresine gidin.
+- Uygulamayı başlatın ve tarayıcınızda `http://localhost/FilmDiziPlatformu` adresine gidin.
 - Kullanıcı kaydı oluşturun veya giriş yapın.
 - Film ve dizi önerilerini görüntüleyin, puan verin ve yorum yapın.
 
