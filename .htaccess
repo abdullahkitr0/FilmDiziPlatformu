@@ -1,0 +1,72 @@
+# Hata sayfaları
+ErrorDocument 404 /404.php
+ErrorDocument 403 /403.php
+
+# Bakım modu kontrolü
+RewriteEngine On
+RewriteBase /
+
+# Bakım modu kontrolü için PHP dosyasını çalıştır
+RewriteCond %{REQUEST_URI} !^/maintenance\.php$
+RewriteCond %{REQUEST_URI} !^/assets/.*$
+RewriteCond %{REQUEST_URI} !^/admin/.*$
+RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
+RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif)$
+RewriteCond %{DOCUMENT_ROOT}/maintenance.flag -f
+RewriteRule ^ maintenance.php [L]
+
+# Güvenlik önlemleri
+Options -Indexes
+ServerSignature Off
+
+# PHP hata gösterimini kapat
+php_flag display_errors off
+
+# Dizin listelemeyi kapat
+IndexIgnore *
+
+# Bazı dosya türlerini engelle
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Config dosyalarına erişimi engelle
+<FilesMatch "^(config\.php|database\.php)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# XSS koruması
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Karakter seti
+AddDefaultCharset UTF-8
+
+# Sıkıştırma
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Önbellek
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule> 
